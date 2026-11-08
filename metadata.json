@@ -1,0 +1,6 @@
+{
+  "name": "Chatwork 地震速報通知 BOT (Render対応)",
+  "description": "P2P地震情報APIからリアルタイムで地震データを取得しChatworkへ自動通知。震度5弱以上で[toall]自動メンションを付与するRender対応BOT＆ダッシュボード。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

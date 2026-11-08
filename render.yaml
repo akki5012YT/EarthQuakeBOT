@@ -1,0 +1,26 @@
+# Render Blueprint Configuration (render.yaml)
+# https://render.com/docs/blueprint-spec
+
+services:
+  # 方式1: Web Service (ダッシュボード + 自動ポーリング通知 + ヘルスチェック)
+  - type: web
+    name: chatwork-earthquake-bot
+    runtime: node
+    plan: free # or starter
+    region: singapore # or oregon, frankfurt, etc.
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: CHATWORK_API_TOKEN
+        sync: false # Renderダッシュボードで入力
+      - key: CHATWORK_ROOM_ID
+        sync: false # Renderダッシュボードで入力
+      - key: MIN_NOTIFICATION_SCALE
+        value: "30" # 30: 震度3以上 (※ 45: 震度5弱以上で自動 [toall])
+      - key: POLL_INTERVAL_SECONDS
+        value: "15" # 15秒おきに気象庁データをチェック

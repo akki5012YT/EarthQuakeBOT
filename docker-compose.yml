@@ -1,0 +1,16 @@
+# ローカル検証用 Docker Compose
+services:
+  earthquake-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: chatwork-earthquake-bot
+    ports:
+      - "3000:10000"
+    environment:
+      - PORT=10000
+      - CHATWORK_API_TOKEN=${CHATWORK_API_TOKEN:-}
+      - CHATWORK_ROOM_ID=${CHATWORK_ROOM_ID:-}
+      - MIN_NOTIFICATION_SCALE=30
+      - POLL_INTERVAL_SECONDS=15
+    restart: unless-stopped

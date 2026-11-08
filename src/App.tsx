@@ -178,8 +178,8 @@ export default function App() {
                   <h1 className="font-extrabold text-base md:text-lg tracking-tight">
                     Chatwork 地震速報通知 BOT
                   </h1>
-                  <span className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-xs uppercase tracking-wider">
-                    Render Ready
+                  <span className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-xs tracking-wider flex items-center gap-1">
+                    <span>🐳 Docker &amp; Render Ready</span>
                   </span>
                 </div>
                 <p className="text-[11px] text-slate-400 hidden sm:block">
@@ -308,7 +308,7 @@ export default function App() {
               }`}
             >
               <Cloud className="w-3.5 h-3.5" />
-              <span>Render デプロイ手順書</span>
+              <span>Docker &amp; Render デプロイ手順</span>
             </button>
           </nav>
         </div>

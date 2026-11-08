@@ -7,9 +7,11 @@ FROM node:22-alpine AS builder
 
 WORKDIR /app
 
-# 依存パッケージ定義のコピー & インストール
-COPY package*.json ./
-RUN npm install
+# 依存定義 & .npmrc をコピー
+COPY package*.json .npmrc* ./
+
+# 依存パッケージのインストール (--legacy-peer-deps を明示指定して競合を完全防止)
+RUN npm install --legacy-peer-deps
 
 # アプリケーションコードのコピー & フロントエンドビルド
 COPY . .
@@ -24,7 +26,6 @@ ENV NODE_ENV=production
 ENV PORT=10000
 
 # ビルドステージから成果物と完全なnode_modulesを直接複製
-# (Renderビルド時の一切のネットワークエラー・パッケージ欠落をゼロ化)
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist

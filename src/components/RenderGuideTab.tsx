@@ -27,8 +27,8 @@ export const RenderGuideTab: React.FC = () => {
   const dockerfileContent = `# Render.com 公式対応 Dockerfile (完全検証済み)
 FROM node:22-alpine AS builder
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+COPY package*.json .npmrc* ./
+RUN npm install --legacy-peer-deps
 COPY . .
 RUN npm run build
 
